@@ -9,8 +9,12 @@ const getAll = async (req, res) => {
   }
 };
 const getOne = async (req, res) => {
-  const movieId = req.params.id;
+  const movieId = parseInt(req.params.id, 10);
+
   try {
+    if (isNaN(movieId)) {
+      throw new Error();
+    }
     const [movie] = await findOne(movieId);
     res.send(movie);
   } catch {
