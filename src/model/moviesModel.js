@@ -10,4 +10,13 @@ const findAll = async () => {
   }
 };
 
-module.exports = { findAll };
+const findOne = async (id) => {
+  try {
+    const [movie] = await db.query("select * from `movie` where id = ?", [id]);
+    return movie;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { findAll, findOne };
