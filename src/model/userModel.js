@@ -8,5 +8,17 @@ const findOne = async (id) => {
     console.log(err);
   }
 };
+const addOne = async (user) => {
+  try {
+    const { name, email, password } = user;
+    const [result] = await db.query(
+      "insert into `user` (name, email, password) values (?, ?, ?)",
+      [name, email, password]
+    );
+    return { id: result.insertId, name, email };
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-module.exports = { findOne };
+module.exports = { findOne, addOne };

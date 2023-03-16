@@ -8,6 +8,7 @@ const getAll = async (req, res) => {
     res.sendStatus(500);
   }
 };
+
 const getOne = async (req, res) => {
   const movieId = parseInt(req.params.id, 10);
 
