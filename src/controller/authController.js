@@ -8,7 +8,6 @@ const login = async (req, res) => {
   try {
     // const { name, email, password } = req.body; //problem on
     // fais confiance au donner cree par l'utilisateur nous devont verifer les data avec joi
-    console.log(req.body);
     const errors = validateLogin(req.body);
     if (errors) {
       return res.status(401).send(errors);
@@ -17,14 +16,18 @@ const login = async (req, res) => {
     if (!user) {
       return res.status(401).send("Invalid Credentials");
     }
-    const passwordVerification = verifyPassword(
-      req.body.password,
-      user.password
+
+    const passwordVerification = await verifyPassword(
+      user.password,
+      req.body.password
     );
+
     if (!passwordVerification) {
       return res.status(401).send("Invalid Credentials");
     }
+
     delete user.password;
+
     const token = encodeJWT(user);
 
     res.status(201).json({ token });

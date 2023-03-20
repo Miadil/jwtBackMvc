@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.use("/movie", movieRoutes);
 router.use("/user", userRoutes);
-router.use(authRoutes);
+router.use("/auth", authRoutes);
 
 module.exports = router;
