@@ -29,14 +29,21 @@ const login = async (req, res) => {
     delete user.password;
 
     const token = encodeJWT(user);
-
-    res.status(201).json({ token });
+    // sept 01
+    // res.status(201).json({ token });
+    // step 02
+    // httpOnly pour faire en sorte qu'il ne soit pas manipulable par le js
+    // et le secure en prod le faire passer a true car cella verifie que l'on est bien en https
+    res.cookie("auth_token", token, { httpOnly: true, secure: false });
+    res.status(200).json({ user: user.name });
   } catch (err) {
     console.log(err);
     res.sendStatus(500);
   }
 };
 
-const logout = async (req, res) => {};
+const logout = async (req, res) => {
+  res.clearCookie("auth_token").sendStatus(200);
+};
 
 module.exports = { login, logout };
