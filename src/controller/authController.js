@@ -6,8 +6,7 @@ const validateLogin = require("../validator/loginValidator");
 
 const login = async (req, res) => {
   try {
-    // const { name, email, password } = req.body; //problem on
-    // fais confiance au donner cree par l'utilisateur nous devont verifer les data avec joi
+    // const { name, email, password } = req.body;
     const errors = validateLogin(req.body);
     if (errors) {
       return res.status(401).send(errors);

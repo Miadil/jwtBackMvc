@@ -18,7 +18,7 @@ const getOne = async (req, res) => {
 
 const createOne = async (req, res) => {
   try {
-    // const { name, email, password } = req.body; //problem on fais confiance au donner cree par l'utilisateur nous devont verifer les data avec joi
+    // const { name, email, password } = req.body;
     console.log(req.body);
     const errors = validateUser(req.body);
     if (errors) {
