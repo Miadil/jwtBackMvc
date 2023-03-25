@@ -1,4 +1,4 @@
-const { findAll } = require("../model/moviesModel");
+const { findAll, findOne } = require("../model/moviesModel");
 
 const getAll = async (req, res) => {
   try {
@@ -9,4 +9,18 @@ const getAll = async (req, res) => {
   }
 };
 
-module.exports = { getAll };
+const getOne = async (req, res) => {
+  const movieId = parseInt(req.params.id, 10);
+
+  try {
+    if (isNaN(movieId)) {
+      throw new Error();
+    }
+    const [movie] = await findOne(movieId);
+    res.send(movie);
+  } catch {
+    res.sendStatus(500);
+  }
+};
+
+module.exports = { getAll, getOne };
