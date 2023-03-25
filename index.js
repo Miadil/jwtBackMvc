@@ -1,7 +1,7 @@
 const app = require("./src/app");
 require("dotenv").config();
 
-const port = parseInt(process.env.APP_PORT, 10);
+const port = parseInt(process.env.PORT, 10);
 
 app.listen(port, (err) => {
   if (err) {
