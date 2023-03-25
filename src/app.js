@@ -9,6 +9,9 @@ const app = express();
 app.use(express.json());
 //3
 app.use(cookieParser());
+app.get("/", (req, res) => {
+  res.status(200).send("on et la !");
+});
 app.use("/api", router);
 // 1
 app.get("*", (req, res) => {
