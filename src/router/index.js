@@ -7,7 +7,7 @@ const authRoutes = require("./authRoutes");
 const authorization = require("../middleware/auth");
 
 const router = express.Router();
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.status(200).send("on et la ! /api");
 });
 router.use("/movie", authorization, movieRoutes);
