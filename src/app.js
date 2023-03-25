@@ -5,9 +5,16 @@ const cors = require("cors");
 
 const router = require("./router");
 const { required } = require("joi");
+const corsOptions = {
+  origin: [
+    "https://jwtbackmvc-production.up.railway.app/",
+    "https://railway.app",
+  ],
+  methods: ["GET", "POST"],
+};
 
 const app = express();
-app.use(cors("*"));
+app.use(cors(corsOptions));
 // 2
 app.use(express.json());
 //3
