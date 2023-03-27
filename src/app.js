@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(cookieParser());
 app.get("/", (req, res) => {
-  res.status(200).send("on et la !");
+  res.status(200).send("on et la ! j'aime le poulet");
 });
 app.use("/api", router);
 // 1
